@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription
+{% endblock %}
+
+{% block body %}
+
+
+<!-- Ec breadcrumb start -->
+<div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="row ec_breadcrumb_inner">
+					<div class="col-md-6 col-sm-12">
+						<h2 class="ec-breadcrumb-title">Inscription</h2>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<!-- ec-breadcrumb-list start -->
+						<ul class="ec-breadcrumb-list">
+							<li class="ec-breadcrumb-item"><a href="{{path('app_main')}}">Accueil</a></li>
+							<li class="ec-breadcrumb-item active">Inscription</li>
+						</ul>
+						<!-- ec-breadcrumb-list end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Ec breadcrumb end -->
+
+
+<section class="ec-page-content section-space-p">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<div class="section-title">
+					<h2 class="ec-bg-title">Inscription</h2>
+					<h2 class="ec-title">Inscription</h2>
+					<p class="sub-title mb-3">Best place to buy and sell digital products</p>
+				</div>
+			</div>
+			<div class="ec-register-wrapper">
+				<div class="ec-register-container">
+					<div class="ec-register-form">
+				{{ form_errors(registrationForm) }}
+				{{ form_start(registrationForm) }}
+				
+					{# le form_row permet de placer un champs dans une zone spécifique #}
+					<span class="ec-register-wrap ec-register-half">
+					{{ form_row(registrationForm.lastname) }}
+					</span>
+					<span class="ec-register-wrap ec-register-half">
+					{{ form_row(registrationForm.firstname) }}
+					</span>
+					<span class="ec-register-wrap ec-register-half">
+					{{ form_row(registrationForm.email) }}
+					</span>
+					<span class="ec-register-wrap ec-register-half">
+					{{ form_row(registrationForm.plainPassword, {
+            label: 'Password'
+        }) }}
+	</span>
+
+	               <span class="ec-register-wrap ec-register-half">  
+					{{ form_row(registrationForm.address) }}
+					</span>
+					<span class="ec-register-wrap ec-register-half">
+					{{ form_row(registrationForm.zipcode) }}
+					</span>
+					<span class="ec-register-wrap">
+					{{ form_row(registrationForm.city) }}
+					</span>
+					<span class="ec-register-wrap ec-register-half">
+					{{ form_row(registrationForm.RGPDConsent) }}
+					</span>
+			
+					<span class="ec-register-wrap ec-register-btn">
+						<button class="btn btn-primary" type="submit">Register</button>
+					</span>
+						<a href="{{path('app_login')}}" class='btn-lg btn btn-danger mt-3'>Connexion</a>
+					
+				{{ form_end(registrationForm) }}
+			
+				
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</section>
+
+
+
+	
+
+{% endblock %}

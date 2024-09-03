@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+<!--
+	<div class="container">
+		<section class="row">
+			<div class="col-12">
+				<h1>Cart</h1>
+				<p>Bonjour nous sommes sur la vue du panier</p>
+			</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Produit</th>
+						<th>Prix</th>
+						<th>Quantité</th>
+						<th>total</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for element in data %}
+						<tr>
+							<td>{{element.product.name}}
+							</td>
+							<td>{{element.product.price / 100}}</td>
+							<td>{{element.quantity}}</td>
+							<td>{{element.quantity * element.product.price / 100}}
+								FCFA</td>
+							<td>
+								<a href="{{path('cart_add', {id: element.product.id})}}" class="btn btn-success">+</a>
+								<a href="{{path('cart_remove', {id: element.product.id})}}" class="btn btn-warning">-</a>
+								<a href="{{path('cart_delete', {id: element.product.id})}}" class="btn btn-danger">supprimer</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Votre Panier est vide</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+				<tfoot>
+					<td colspan="3">Total</td>
+					<td colspan="3">{{total/100}}
+						FCFA</td>
+					<td>
+						<a href="{{path('cart_empty')}}" class="btn btn-danger">Vider</a>
+					</td>
+				</tfoot>
+			</table>
+			<a href="{{path('app_orders_add')}}" class="btn btn-primary">valider le panier</a>
+		</section>
+	</div>
+-->
+
+	<!--section start-->
+<!-- breadcrumb start -->
+<div class="breadcrumb-main ">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="breadcrumb-contain">
+                    <div>
+                        <h2>Panier</h2>
+                        <ul>
+                            <li><a href="{{path('app_main')}}">home</a></li>
+                            <li><i class="fa fa-angle-double-right"></i></li>
+                            <li><a href=""{{path('app_main')}}>panier</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb End -->
+	<section class="cart-section section-big-py-space b-g-light">
+		<div class="custom-container">
+			<div class="row">
+				<div class="col-sm-12">
+					<table class="table cart-table table-responsive-xs">
+						<thead>
+							<tr class="table-head">
+								<th scope="col">image</th>
+								<th scope="col">Nom du produit </th>
+								<th scope="col">Prix</th>
+								<th scope="col">Quantité</th>
+								<th scope="col">action</th>
+								<th scope="col">total</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for element in data %}
+						  
+							
+						  
+							<tr>
+							
+								<td>
+								{% for image in element.product.images %}
+									<a href="javascript:void(0)"><img src="{{ asset('assets/upload/products/mini/300x300-')~ image.name }}" alt="cart" class=" "></a>
+									{% endfor %}
+								</td>
+								
+								<td>
+									<a href="javascript:void(0)">{{element.product.name}}</a>
+									<div class="mobile-cart-content">
+										<div class="col-xs-3">
+											<div class="qty-box">
+												<div class="input-group">
+													<input type="text" name="quantity" class="form-control input-number" value="1">
+												</div>
+											</div>
+										</div>
+										<div class="col-xs-3">
+											<h2 class="td-color">{{element.product.price / 100}}</h2>
+										</div>
+										<div class="col-xs-3">
+											<h2 class="td-color">
+												<a href="javascript:void(0)" class="icon">
+													<i class="ti-close"></i>
+												</a>
+												
+											</h2>
+										</div>
+									</div>
+								</td>
+								<td>
+									<h2>{{element.product.price / 100}}</h2>
+								</td>
+								<td>
+									<div class="qty-box">
+										<div class="input-group">
+											<input type="number" name="quantity" class="form-control input-number" value="{{element.quantity}}">
+											
+										</div>
+									</div>
+								</td>
+								<td>
+									<a href="javascript:void(0)" class="icon">
+										<i class="ti-close"></i>
+									</a>
+									
+										<a href="{{path('cart_add', {id: element.product.id})}}" class="btn btn-primary color="dark" ">+</a>
+										<a href="{{path('cart_remove', {id: element.product.id})}}" class="btn btn-warning">-</a>
+										
+									
+								</td>
+								<td>
+									<h2 class="td-color">{{element.quantity * element.product.price / 100}}</h2>
+								</td>
+							</tr>
+						</tbody>
+						{% endfor %}
+						
+						
+						
+					</table>
+					<table class="table cart-table table-responsive-md">
+						<tfoot>
+							<tr>
+								<td>total  :</td>
+								<td>
+									<h2>{{total/100}}</h2>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+			<div class="row cart-buttons">
+				<div class="col-12">
+					<a href="{{path('app_main')}}" class="btn btn-normal">Continuer mes achats</a>
+					<a href="{{path('app_orders_add')}}" class="btn btn-normal ms-3">Valider le panier</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--section end-->
+
+{% endblock %}

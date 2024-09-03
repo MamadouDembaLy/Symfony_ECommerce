@@ -1,0 +1,42 @@
+{% extends "base.html.twig" %}
+{% block title %}Listes des produits
+{% endblock %}
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			{% include "_partials/_adminav.html.twig" %}
+			<main class="col-9 border border-light bg-white p-2">
+				<h1>Welcome! page liste des produits</h1>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>NOM</th>
+							<th>prix</th>
+							<th>stock</th>
+							<th>categories</th>
+                            <th>Photo</th>
+                            <th>Action</th>
+						</tr>
+					</thead>
+                    <tbody>
+                      {% for produit in produits %}
+                        <tr>
+                        <td>{{produit.id}}</td>
+                        <td>{{produit.name}}</td>
+                        <td>{{produit.price /100}}</td>
+                        <td>{{produit.stock}}</td>
+                        <td>{{produit.categories.name}}</td>
+                        <td> <img src="{{asset('assets/upload/products/mini/300x300-' ~ produit.images[0].name)}}" class="img-thumbail" alt=""></td>
+                        <td>
+                           <a href="{{path('admin_products_edit',{id: produit.id})}}" class="btn btn-success" >Modifier</a>
+                        </td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+				</table>
+			</main>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+		
+        <!-- Ec breadcrumb start -->
+        <div class="sticky-header-next-sec  ec-breadcrumb section-space-mb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row ec_breadcrumb_inner">
+                            <div class="col-md-6 col-sm-12">
+                                <h2 class="ec-breadcrumb-title">Connexion</h2>
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                                <!-- ec-breadcrumb-list start -->
+                                <ul class="ec-breadcrumb-list">
+                                    <li class="ec-breadcrumb-item"><a href="{{path('app_main')}}">Accueil</a></li>
+                                    <li class="ec-breadcrumb-item active">Connexion</li>
+                                </ul>
+                                <!-- ec-breadcrumb-list end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Ec breadcrumb end -->
+        <section class="ec-page-content section-space-p">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <div class="section-title">
+                            <h2 class="ec-bg-title">Log In</h2>
+                            <h2 class="ec-title">Log In</h2>
+                            <p class="sub-title mb-3">Best place to buy and sell digital products</p>
+                        </div>
+                    </div>
+                    <div class="ec-login-wrapper">
+                        <div class="ec-login-container">
+                            <div class="ec-login-form">
+						<form method="post" class="theme-form">
+							{% if error %}
+								<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							{% endif %}
+
+							{% if app.user %}
+								<div class="mb-3">
+									Vous etes connecté(e) comme
+									{{ app.user.userIdentifier }},
+									<a href="{{ path('app_logout') }}">Me Déconnecter</a>
+								</div>
+							{% endif %}
+
+							<span class="ec-login-wrap">
+								<label for="inputEmail">Email</label>
+								<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            </span>
+							<span class="ec-login-wrap">
+								<label for="inputPassword">Password</label>
+								<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                            </span>
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                            <span class="ec-login-wrap ec-login-fp">
+                                <label><a href="{{path('forgotten_password')}}">Forgot Password?</a></label>
+                            </span>
+
+                            <span class="ec-login-wrap ec-login-btn">
+                                <button class="btn btn-primary" type="submit">Connexion</button>
+                                <a href="{{path('app_register')}}" class="btn btn-secondary">Register</a>
+                            </span>
+							
+							
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+-->
+
+
+ 
+	
+
+	
+
+
+
+
+
+	
+
+{% endblock %}

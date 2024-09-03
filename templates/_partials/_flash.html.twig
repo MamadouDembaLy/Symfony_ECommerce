@@ -1,0 +1,13 @@
+{# ce fichier permet de passer des messages au niveau des controlleur comme des promos,des messages d'activation#}
+{% for label,messages in app.flashes %}
+	{% for message in messages %}
+		{# le label permet de choisir la couleur de l'alerte(du message) #}
+		<div class="alert alert-{{label}} alert-dismissible" role="alert">
+			<button type="button" class="btn-close" data-bs-dismissible="alert" aria-label="close"></button>
+			<div class="alert-message">
+				{{message|raw}}
+			</div>
+		</div>
+	{% endfor %}
+
+{% endfor %}

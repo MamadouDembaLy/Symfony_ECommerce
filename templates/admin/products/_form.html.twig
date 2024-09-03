@@ -1,0 +1,27 @@
+{# Ce formulaire va gérer les ajouts et les edits 
+// twig.yaml
+#}
+
+{{form_start(ProductForm)}}
+{{form_row(ProductForm.name)}}
+{{form_row(ProductForm.description)}}
+{{form_row(ProductForm.categories)}}
+{{form_row(ProductForm.price)}}
+{{form_row(ProductForm.stock)}}
+
+{# on affiches les images quand on fait l'editio#}
+{% if app.request.attributes.get('_route') == 'admin_products_edit' %}
+	<h2>Images</h2>
+	{% for image in product.images %}
+		<div>
+			<img src="{{asset('assets/upload/products/mini/300x300-' ~ image.name)}}" alt="image" width="150">
+         <a href="{{path('admin_products_delete_image',{id:image.id})}}" data-delete data-token="{{csrf_token('delete' ~ image.id )}}" > Supprimer</a>
+		</div>
+	{% endfor %}
+
+{% endif %}
+
+{{form_row(ProductForm.images)}}
+
+<button type="submit" class="btn btn btn-primary mt-3">{{button_label|default('ajouter')}}</button>
+{{form_end(ProductForm)}}
